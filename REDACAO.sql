@@ -7,7 +7,7 @@
 	sexo CHAR(1) NOT NULL,
     salario DECIMAL(9,2),
     cargo VARCHAR(30),
-    senha VARCHAR(128),
+    senha VARCHAR(128) NOT NULL,
     data_admissao DATE NOT NULL,
     data_nascimento DATE NOT NULL,  
     numero_supervisor INTEGER,
@@ -22,7 +22,7 @@
     RG VARCHAR(9) UNIQUE NOT NULL,
     data_nascimento DATE NOT NULL,
     sexo CHAR(1) NOT NULL,
-    senha VARCHAR(128)
+    senha VARCHAR(128) NOT NULL
  );
  
  CREATE TABLE EMAIL( 
@@ -124,41 +124,41 @@ CONSTRAINT FK_AUTORIA2 FOREIGN KEY (numero_jornalista) REFERENCES JORNALISTA(id_
  
  
  -- INSERINDO DADOS NAS TABELAS
- INSERT INTO JORNALISTA(nome, CPF, RG, sexo, salario, data_admissao, data_nascimento, data_admissao_diretor, data_admissao_editor, cargo, numero_supervisor)
+ INSERT INTO JORNALISTA(nome, CPF, RG, sexo, salario, data_admissao, data_nascimento, data_admissao_diretor, data_admissao_editor, cargo, numero_supervisor, senha)
  VALUES
- ('Rodrigo Guedes Couto', '12345678901', '123456789',  'M', 5900.50, '2025-09-15', '2000-06-01', NULL, NULL, 'REDATOR', 7),  
-('Fernanda Viana Saraiva', '98765432100', '987654321', 'F', 5900.50, '2025-09-15', '2002-02-26', NULL, NULL, 'REDATOR', 7),    
-('Alice Jardim Becker', '45678912345', '456789123', 'F', 4900.50, '2025-09-15', '2004-12-20', NULL, NULL, 'REDATOR', 7),    
-('Jorge Dornelles Bandeira', '10293847566', '102938475', 'M', 4900.50, '2025-09-15', '2004-01-30', NULL, NULL, 'REDATOR', 7),     
-('Felipe Barcellos Maia', '56473829100', '564738291', 'M', 4900.50, '2024-08-13', '2003-06-21', NULL, NULL, 'REDATOR', 7),   
-('Laura Bernardes Torres', '22334455677', '223344556', 'F', 6900.50, '2024-08-13', '2003-06-21', NULL, NULL, 'REDATOR', 7),  
-('Bruno Prates Bitencourt', '88990011223', '889900112', 'M', 8900.50, '2025-04-10', '1988-10-25', NULL, '2025-09-11', 'EDITOR', NULL),  
-('Andre Nogueira Paiva' , '33445566778', '334455667', 'M', 12900.50, '2024-04-10', '1980-11-30', '2024-12-04', NULL, 'DIRETOR', NULL),  
-('Daniel Prestes Mendonca', '77889900112', '778899001', 'M', 2900.50, '2025-06-01', '2006-08-18', NULL, NULL, 'ESTAGIARIO', 6), 
-('Patricia Assis Figueiredo', '44556677889', '445566778', 'F', 2900.50, '2025-06-01', '2007-04-21', NULL, NULL, 'ESTAGIARIO', 3);
+ ('Rodrigo Guedes Couto', '12345678901', '123456789',  'M', 5900.50, '2025-09-15', '2000-06-01', NULL, NULL, 'REDATOR', 7, '7751a23fa55170a57e90374df13a3ab78efe0e99'),  
+('Fernanda Viana Saraiva', '98765432100', '987654321', 'F', 5900.50, '2025-09-15', '2002-02-26', NULL, NULL, 'REDATOR', 7, 'adddc25f41289bb0e9da98742a94a861560c1c37'),    
+('Alice Jardim Becker', '45678912345', '456789123', 'F', 4900.50, '2025-09-15', '2004-12-20', NULL, NULL, 'REDATOR', 7, '1977dbf873c2472d1ee9d1d204aeacd9debce001'),    
+('Jorge Dornelles Bandeira', '10293847566', '102938475', 'M', 4900.50, '2025-09-15', '2004-01-30', NULL, NULL, 'REDATOR', 7, '3decd49a6c6dce88c16a85b9a8e42b51aa36f1e2'),     
+('Felipe Barcellos Maia', '56473829100', '564738291', 'M', 4900.50, '2024-08-13', '2003-06-21', NULL, NULL, 'REDATOR', 7, 'b649129e5b37e23c4afd7489c5886cbbe15d47fb'),   
+('Laura Bernardes Torres', '22334455677', '223344556', 'F', 6900.50, '2024-08-13', '2003-06-21', NULL, NULL, 'REDATOR', 7, 'c1b700271d4405cb0ed0cb2f1470b4ca95373f2f'),  
+('Bruno Prates Bitencourt', '88990011223', '889900112', 'M', 8900.50, '2025-04-10', '1988-10-25', NULL, '2025-09-11', 'EDITOR', NULL, 'e8e99fbc7a034fcb25f8166cebb4b93fbd1a791d'),  
+('Andre Nogueira Paiva' , '33445566778', '334455667', 'M', 12900.50, '2024-04-10', '1980-11-30', '2024-12-04', NULL, 'DIRETOR', NULL, '9233ff48b66db24586a685649c01985926cf560f'),  
+('Daniel Prestes Mendonca', '77889900112', '778899001', 'M', 2900.50, '2025-06-01', '2006-08-18', NULL, NULL, 'ESTAGIARIO', 6, 'c5fdb31fd51b9dfc20bed44d07972ea00a5dd11c'), 
+('Patricia Assis Figueiredo', '44556677889', '445566778', 'F', 2900.50, '2025-06-01', '2007-04-21', NULL, NULL, 'ESTAGIARIO', 3, '9354d57edde9ce658423e1ae2b1fc7460c63cbf8');
  
- INSERT INTO LEITOR(nome, CPF, RG, data_nascimento, sexo)
- VALUES ( 'Pedro Almeida Silva', '11223344556','112233445', '1997-05-30', 'M' ),
-( 'Paulo Alves Santos', '66778899001','667788990', '2001-10-20', 'M'  ),
-( 'Patricia Araujo Oliveira', '99001122334','990011223', '1994-07-12', 'F' ),
-( 'Maria Barbosa Souza', '55667788990','556677889', '1992-01-30', 'F' ),
-( 'Marcia Carvalho Pereira', '10101010101','101010101', '1992-05-12', 'F' ),
-( 'Luiz Costa Ferreira', '20202020202','202020202', '1994-03-02', 'M'  ),
-( 'Lucas Ferreira Lima', '30303030303','303030303', '1993-03-02', 'M'  ),
-( 'Juliana Gomes Alves', '40404040404','404040404', '1995-12-13', 'F' ),
-( 'Julia Rodrigues Jesus', '50505050505','505050505', '1991-01-05', 'F' ),
-( 'Jose Lima Costa', '60606060606','606060606', '1990-09-10', 'M'  ),
-( 'Joao Nascimento Sousa', '70707070707','707070707', '1995-09-10', 'M'  ),
-( 'Francisco Oliveira Gomes', '80808080808','808080808', '1997-12-30', 'M'  ),
-( 'Gabriel Pereira Nascimento', '90909090909','909090909', '1989-12-01', 'M'  ),
-( 'Francisca Ribeiro Soares', '11122233344','111222333', '1989-08-21', 'F' ),
-( 'Fernanda Rodrigues Ribeiro', '22233344455','222333444', '1989-06-21', 'F' ),
-( 'Carlos Almeida Santos', '33344455566','333444555', '2001-10-20', 'M'  ),
-( 'Antonio Silva Jesus', '44455566677','444555666', '1982-08-15', 'M'  ),
-( 'Antonia Soares Araujo', '55566677788','555666777', '1982-08-22', 'F' ),
-( 'Ana Sousa Barbosa', '66677788899','666777888', '1988-01-22', 'F' ),
-( 'Adriana Souza Carvalho', '77788899900','777888999', '1990-01-15', 'F'  );
- 
+ INSERT INTO LEITOR(nome, CPF, RG, data_nascimento, sexo, senha)
+ VALUES ( 'Pedro Almeida Silva', '11223344556','112233445', '1997-05-30', 'M', '7751a23fa55170a57e90374df13a3ab78efe0e99'),
+( 'Paulo Alves Santos', '66778899001','667788990', '2001-10-20', 'M', 'adddc25f41289bb0e9da98742a94a861560c1c37'),
+( 'Patricia Araujo Oliveira', '99001122334','990011223', '1994-07-12', 'F', '1977dbf873c2472d1ee9d1d204aeacd9debce001'),
+( 'Maria Barbosa Souza', '55667788990','556677889', '1992-01-30', 'F', '3decd49a6c6dce88c16a85b9a8e42b51aa36f1e2'),
+( 'Marcia Carvalho Pereira', '10101010101','101010101', '1992-05-12', 'F', 'b649129e5b37e23c4afd7489c5886cbbe15d47fb'),
+( 'Luiz Costa Ferreira', '20202020202','202020202', '1994-03-02', 'M', 'c1b700271d4405cb0ed0cb2f1470b4ca95373f2f'),
+( 'Lucas Ferreira Lima', '30303030303','303030303', '1993-03-02', 'M', 'e8e99fbc7a034fcb25f8166cebb4b93fbd1a791d'),
+( 'Juliana Gomes Alves', '40404040404','404040404', '1995-12-13', 'F', '9233ff48b66db24586a685649c01985926c5649c'),
+( 'Julia Rodrigues Jesus', '50505050505','505050505', '1991-01-05', 'F', 'c5fdb31fd51b9dfc20bed44d07972ea00a544d07'),
+( 'Jose Lima Costa', '60606060606','606060606', '1990-09-10', 'M', '9354d57edde9ce658423e1ae2b1fc7460c6c7460'),
+( 'Joao Nascimento Sousa', '70707070707','707070707', '1995-09-10', 'M', '7751a23fa55170a57e90374df13a3ab78ef90374'),
+( 'Francisco Oliveira Gomes', '80808080808','808080808', '1997-12-30', 'M', 'adddc25f41289bb0e9da98742a94a86156098742'),
+( 'Gabriel Pereira Nascimento', '90909090909','909090909', '1989-12-01', 'M', '1977dbf873c2472d1ee9d1d204aeacd9deb9debc'),
+( 'Francisca Ribeiro Soares', '11122233344','111222333', '1989-08-21', 'F', '3decd49a6c6dce88c16a85b9a8e42b51aa342b51'),
+( 'Fernanda Rodrigues Ribeiro', '22233344455','222333444', '1989-06-21', 'F', 'b649129e5b37e23c4afd7489c5886cbbe15a9537'),
+( 'Carlos Almeida Santos', '33344455566','333444555', '2001-10-20', 'M', 'c1b700271d4405cb0ed0cb2f1470b4ca95373f2f'),
+( 'Antonio Silva Jesus', '44455566677','444555666', '1982-08-15', 'M', 'e8e99fbc7a034fcb25f8166cebb4b93fbd1a791d'),
+( 'Antonia Soares Araujo', '55566677788','555666777', '1982-08-22', 'F', '9233ff48b66db24586a685649c01985926ca791d'),
+( 'Ana Sousa Barbosa', '66677788899','666777888', '1988-01-22', 'F', 'c5fdb31fd51b9dfc20bed44d07972ea00a5dd11c'),
+( 'Adriana Souza Carvalho', '77788899900','777888999', '1990-01-15', 'F', '9354d57edde9ce658423e1ae2b1fc7460c6dd11c');
+
  INSERT INTO EMAIL(endereco_email, numero_leitor, numero_jornalista)
  VALUES
 ('rodrigo.couto@mail.com', NULL,  1),
